@@ -1,0 +1,7 @@
+<h3>Hello <%= @user.username %>! Retrouve ici les évènements que tu as crées:</h3>
+
+<% @events.each do |event| %>
+
+      L'évènement du <%= event.date %> à <%= event.place %>: <strong><%= event.description %></strong><br />
+
+<% end %>

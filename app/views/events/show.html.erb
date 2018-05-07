@@ -1,0 +1,15 @@
+Le créateur de l'évènement: <%= @event.creator_id %><br />
+
+La description de l'évènement: <%= @event.description %><br />
+
+Le lieu de l'évènement: <%= @event.place %><br />
+
+La date de l'évènement: <%= @event.date %><br />
+
+<% if user_signed_in? %>
+<%= link_to "Participer à l'évènement", subscribe_path(@event)%>
+<% end %>
+
+
+
+

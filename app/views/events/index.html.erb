@@ -1,0 +1,9 @@
+<h1>Retrouve ici tous les events!</h1>
+
+<% @events.each do |event| %>
+
+Event à <%= event.place %> le <%= event.date %>.</br />
+<a href= "<%= event_path(event) %>" class="btn btn-primary">Consulter la page de l'évènement</a><br />
+
+<% end %>
+
