@@ -3,8 +3,18 @@
     <%= form_for @event do |f| %>
 
         <div class = "form-group">
+          Indique ici le nom de ton évènement:<br />
+          <%= f.text_field :name %><br />
+        </div>
+
+        <div class = "form-group">
           Indique ici la description de ton évènement:<br />
           <%= f.text_area :description %><br />
+        </div>
+
+        <div class = "form-group">
+          Indique ici le prix de ton évènement pour chaque participant:<br />
+          <%= f.number_field :price %><br />
         </div>
 
         <div class = "form-group">
@@ -14,7 +24,7 @@
 
         <div class = "form-group">
           Indique ici la date de ton évènement:<br />
-          <%= f.text_field :date %><br />
+          <%= f.date_field :date %><br />
         </div>
 
         <div class = "form-group">

@@ -6,6 +6,7 @@
         <li><%= link_to "Edit account", edit_user_registration_path %></li>
         <li><a href="/events/new">Créer un nouvel évènement</a></li>
         <li><a href="/events">Index de tous les évènements</a></li>
+        <li><%= link_to "Mon profil", user_path(current_user) %></li>
       <% else %>
         <li><h2>Bienvenue à Eventbrite 2.0</h2></li>
         <li><%= link_to "Sign in", new_user_session_path %></li>

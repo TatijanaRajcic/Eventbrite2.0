@@ -1,6 +1,17 @@
-<h3>Hello <%= @user.username %>! Retrouve ici les évènements que tu as crées:</h3>
+<h3>Hello <%= @user.username %>!</h3>
 
-<% @events.each do |event| %>
+<h3> Retrouve ici les évènements que tu as crées:</h3>
+
+<% @events_created.each do |event| %>
+
+      L'évènement du <%= event.date %> à <%= event.place %>: <strong><%= event.description %></strong><br />
+
+<% end %>
+
+
+<h3>Retrouve ici les évènements auxquels tu participes:</h3>
+
+<% @events_attended.each do |event| %>
 
       L'évènement du <%= event.date %> à <%= event.place %>: <strong><%= event.description %></strong><br />
 

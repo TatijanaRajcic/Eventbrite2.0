@@ -7,7 +7,11 @@ Le lieu de l'évènement: <%= @event.place %><br />
 La date de l'évènement: <%= @event.date %><br />
 
 <% if user_signed_in? %>
-<%= link_to "Participer à l'évènement", subscribe_path(@event)%>
+	<% if @event.attendees.include? current_user %>
+	    <%= link_to "Je ne veux plus participer à l'évènement", unsubscribe_path(@event), method: :post %>
+	<% else %>
+		<%= link_to "Participer à l'évènement", subscribe_path(@event), method: :post %>
+	<% end %>
 <% end %>
 
 

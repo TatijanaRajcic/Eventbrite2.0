@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :events
-  get 'events/:id/subscribe', to: 'events#subscribe', as: 'subscribe'
+  post 'events/:id/subscribe', to: 'events#subscribe', as: 'subscribe'
+  post 'events/:id/unsubscribe', to: 'events#unsubscribe', as: 'unsubscribe'
 end
