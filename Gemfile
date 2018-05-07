@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 # authentification
 gem 'devise'
-#gem 'pundit'
-
+gem 'stripe'
 gem 'rails'
 gem 'puma'
 gem 'sass-rails'
@@ -23,6 +22,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem "factory_bot_rails"
   gem 'simplecov'
+  gem 'dotenv-rails'
 end
 
 group :development do
