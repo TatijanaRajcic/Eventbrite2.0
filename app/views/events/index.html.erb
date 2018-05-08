@@ -1,9 +1,21 @@
-<h1>Retrouve ici tous les events!</h1>
+<h3>Retrouve ici tous les events crées sur Eventbrite 2.0!</h3><br />
 
-<% @events.each do |event| %>
-
-Event à <%= event.place %> le <%= event.date %>.</br />
-<a href= "<%= event_path(event) %>" class="btn btn-primary">Consulter la page de l'évènement</a><br />
-
-<% end %>
-
+	<table class="table table-striped">
+	  <tr>
+	    <th>Nom de l'event</th>
+	    <th>Date de l'event</th>
+	    <th>Lieu de l'event</th>
+	    <th>Créateur de l'event</th>
+	    <th>Lien vers l'event</th>
+	  </tr>
+	 
+	  <% @events.each do |event|%> 
+	    <tr>
+	      <td><%= event.name %></td>
+	      <td><%= event.date.strftime("%d-%m-%Y") %></td>
+	      <td><%= event.place %></td>
+	      <td><%= event.creator.username %></td>
+	      <td><%= link_to "Voir l'événement", event_path(event) %></td>
+	    </tr>
+	  <% end %>
+	</table>

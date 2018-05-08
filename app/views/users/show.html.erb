@@ -1,18 +1,45 @@
-<h3>Hello <%= @user.username %>!</h3>
+<h3>Hello <strong><%= @user.username %></strong>!</h3>
 
-<h3> Retrouve ici les évènements que tu as crées:</h3>
+<h3> Retrouve ici les évènements que tu as crées.</h3>
 
-<% @events_created.each do |event| %>
+	<table class="table table-striped">
+	  <tr>
+	    <th>Nom de l'event</th>
+	    <th>Date de l'event</th>
+	    <th>Lieu de l'event</th>
+	    <th>Créateur de l'event</th>
+	    <th>Lien vers l'event</th>
+	  </tr>
+	 
+	  <% @events_created.each do |event|%> 
+	    <tr>
+	      <td><%= event.name %></td>
+	      <td><%= event.date.strftime("%d-%m-%Y") %></td>
+	      <td><%= event.place %></td>
+	      <td>C'est toi!</td>
+	      <td><%= link_to "Voir l'événement", event_path(event) %></td>
+	    </tr>
+	  <% end %>
+	</table>
 
-      L'évènement du <%= event.date %> à <%= event.place %>: <strong><%= event.description %></strong><br />
+<h3>Retrouve ici les évènements auxquels tu participes.</h3>
 
-<% end %>
-
-
-<h3>Retrouve ici les évènements auxquels tu participes:</h3>
-
-<% @events_attended.each do |event| %>
-
-      L'évènement du <%= event.date %> à <%= event.place %>: <strong><%= event.description %></strong><br />
-
-<% end %>
+	<table class="table table-striped">
+	  <tr>
+	    <th>Nom de l'event</th>
+	    <th>Date de l'event</th>
+	    <th>Lieu de l'event</th>
+	    <th>Créateur de l'event</th>
+	    <th>Lien vers l'event</th>
+	  </tr>
+	 
+	  <% @events_attended.each do |event|%> 
+	    <tr>
+	      <td><%= event.name %></td>
+	      <td><%= event.date.strftime("%d-%m-%Y") %></td>
+	      <td><%= event.place %></td>
+	      <td><%= event.creator.username %></td>
+	      <td><%= link_to "Voir l'événement", event_path(event) %></td>
+	    </tr>
+	  <% end %>
+	</table>

@@ -1,20 +1,28 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-light"> 
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Eventbrite 2.0</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "Edit account", edit_user_registration_path %></li>
-        <li><a href="/events/new">Créer un nouvel évènement</a></li>
-        <li><a href="/events">Index de tous les évènements</a></li>
-        <li><%= link_to "Mon profil", user_path(current_user) %></li>
+        <li class="nav-item">
+          <%= link_to "Créer un nouvel évènement", new_event_path %></li>
+        <li class="nav-item">
+          <%= link_to "Index de tous les évènements", events_path %></li>
+        <li class="nav-item">
+          <%= link_to "Mon profil", user_path(current_user) %></li>
+        <li class="nav-item">
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><h2>Bienvenue à Eventbrite 2.0</h2></li>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li class="nav-item">
+          <%= link_to "Sign in", new_user_session_path %></li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path %></li>
       <% end %>
     </ul>
+
   </div>
 </nav>
-
-
 

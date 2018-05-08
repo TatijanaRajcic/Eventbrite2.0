@@ -1,19 +1,53 @@
-Le créateur de l'évènement: <%= @event.creator_id %><br />
+<h3> Voici le super évènement: <strong><%= @event.name %></strong></h3>
 
-La description de l'évènement: <%= @event.description %><br />
 
-Le lieu de l'évènement: <%= @event.place %><br />
+  <div class = row style="text-align: center; font-size: 20px;">
 
-La date de l'évènement: <%= @event.date %><br />
+	<p>Il a été crée par notre britter <strong><%= @event.creator.username %></strong>!</p>
 
-<% if user_signed_in? %>
-	<% if @event.attendees.include? current_user %>
-	    <%= link_to "Je ne veux plus participer à l'évènement", unsubscribe_path(@event), method: :post %>
-	<% else %>
-		<%= link_to "Participer à l'évènement", subscribe_path(@event), method: :post %>
+	<p>D'après <strong><%= @event.creator.username %></strong>, son évènement ressemblera à ça: 
+		<p style="font-style: italic;">
+			<%= @event.description %>
+		</p>
+	</p>
+
+
+	<p>Quelques infos pratiques:
+		<ul>
+			<li>Le lieu: <%= @event.place %></li>
+			<li>La date: <%= @event.date.strftime("%d-%m-%Y") %><br /></li>
+		</ul>
+	</p>
+
+	<p>
+	<% if user_signed_in? %>
+		<% if @event.attendees.include? current_user %>
+		    <%= link_to "Tu veux te désinscrire de l'event? Attention, tu ne seras pas remboursé.", unsubscribe_path(@event), method: :post %>
+		<% else %>
+			<%= form_tag subscribe_path(@event) do %>
+			  <article>
+			    <% if flash[:error].present? %>
+			      <div id="error_explanation">
+			        <p><%= flash[:error] %></p>
+			      </div>
+			    <% end %>
+			    <label class="amount">
+			      <span>Pour rejoindre l'évènement, merci de payer son prix: <%= @event.price.to_f/100 %>€</span>
+			    </label>
+			  </article>
+
+			  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+			          data-description="prix de l'évènement"
+			          data-amount="<%= @event.price %>"
+			          data-currency="eur"
+			          data-locale="auto"></script>
+			<% end %>
+			<!-- <%= link_to "Participer à l'évènement", subscribe_path(@event), method: :post %> -->
+		<% end %>
 	<% end %>
-<% end %>
+	</p>
 
-
+</div>
 
 

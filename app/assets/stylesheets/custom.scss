@@ -1,0 +1,29 @@
+nav {
+	background-color: #1a936f;
+}
+
+nav a {
+	color: #44ffd2;
+	text-decoration: none;
+}
+
+
+a:hover {
+
+	opacity: .85;
+	text-decoration: underline;
+
+}
+
+a:visited {
+	text-decoration: none;
+	color: #44ffd2;
+}
+
+h3 {
+text-align: center;
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+   background-color: #88d498;
+}
